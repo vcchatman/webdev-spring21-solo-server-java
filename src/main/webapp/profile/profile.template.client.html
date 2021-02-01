@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Assignment 1</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="styles.css" rel="stylesheet"/>
+    <link href="style.css" rel="stylesheet"/>
 
 </head>
 <body>
@@ -20,7 +20,7 @@
         </div>
 
         <div class="alert alert-success" role="alert">
-            Account successfully created.
+            Changes saved.
         </div>
 
         <div class="mb-3 row">
@@ -32,22 +32,10 @@
                 <input type="text"
                        class="form-control"
                        id="username"
-                       placeholder="user1234"/>
+                       placeholder="user1234"
+                       readonly/>
             </div>
         </div>
-
-<!--        <div class="mb-3 row">-->
-<!--            <label for="username"-->
-<!--                   class="col-sm-2 col-form-label">-->
-<!--                Username-->
-<!--            </label>-->
-<!--            <div class="col-sm-10">-->
-<!--                <input type="text"-->
-<!--                       class="form-control"-->
-<!--                       id="username"-->
-<!--                       placeholder="anonymous"/>-->
-<!--            </div>-->
-<!--        </div>-->
 
         <div class="mb-3 row">
             <label for="phoneNumber"
@@ -85,7 +73,7 @@
                         id="userRole">
                     <option>Faculty</option>
                     <option>Student</option>
-                    <option>Staff</option>
+                    <option>Admin</option>
                 </select>
             </div>
         </div>
@@ -99,6 +87,17 @@
                 <input type="date"
                        class="form-control"
                        id="dateOfBirth"/>
+            </div>
+        </div>
+
+        <div class="mb-3 row">
+            <label class="col-sm-2 col-form-label">
+            </label>
+            <div class="col-sm-10">
+                <a href="#"
+                   class="btn btn-block btn-success">
+                    Update Profile
+                </a>
             </div>
         </div>
 
