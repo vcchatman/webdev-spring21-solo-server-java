@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
 </head>
 <body>
 
@@ -13,10 +14,12 @@
         <h1>Editor</h1>
     </div>
 
+<!--    top row-->
     <div class="row">
 
         <div class="col-4">
-            X and CS5610 - WebDev
+            <i class="fa fa-times-circle"></i>
+            CS5610 - WebDev
         </div>
 
         <div class="col-8">
@@ -69,24 +72,32 @@
                        href="#"
                        tabindex="-1"
                        aria-disabled="true">
-                        +
+                        <i class="fa fa-plus"></i>
                     </a>
                 </li>
             </ul>
         </div>
-
     </div>
 
+<!--    second row-->
     <div class="row">
         <div class="col-4">
             <ul class="list-group">
-                <li class="list-group-item">Module 1 - jQuery</li>
+                <li class="list-group-item">
+                    Module 1 - jQuery
+                    <i class="pull-right fa fa-trash"></i>
+<!--                    TODO: COME BACK HERE FOR ICONS AND FONTS AND MAKE IT UNIFORM-->
+                </li>
                 <li class="list-group-item">Module 2 - React</li>
                 <li class="list-group-item">Module 3 - Redux</li>
                 <li class="list-group-item">Module 4 - Native</li>
                 <li class="list-group-item">Module 5 - Angular</li>
                 <li class="list-group-item">Module 6 - Node</li>
                 <li class="list-group-item">Module 7 - Mongo</li>
+                <li class="list-group-item">
+<!--                    TODO: GET RID OF THIS BORDER SOMEHOW-->
+                    <i class="pull-right fa fa-plus"></i>
+                </li>
 
             </ul>
         </div>
@@ -126,13 +137,13 @@
                        href="#"
                        tabindex="-1"
                        aria-disabled="true">
-                        +
+                        <i class="fa fa-plus"></i>
                     </a>
                 </li>
             </ul>
         </div>
 
     </div>
-
+</div>
 </body>
 </html>
