@@ -9,30 +9,41 @@
 
     <div class="container">
 
-        <h1>
-            Sign In
-        </h1>
+        <h1>Sign In</h1>
 
-        <div>
-        Username    <input class="form-control"/>
+        <div class="mb-3 row">
+            <label for="username"
+                   class="col-sm-2 col-form-label">
+                Username
+            </label>
+            <div class="col-sm-10">
+                <input type="text"
+                       class="form-control-plaintext"
+                       id="username"/>
+            </div>
         </div>
-
         <div>
-        Password     <input class="form-control"/>
+            Username    <input class="form-control"/>
         </div>
-
         <div>
-        <button class="btn btn-primary btn-block">
-            Sign In
-        </button>
+            Password     <input class="form-control"/>
         </div>
-
-        <a>
-            Forgot Password
-        </a>
-
+        <div>
+            <a href="../profile/profile.template.client.html">
+                <button class="btn btn-primary btn-block">
+                    Log In
+                </button>
+            </a>
+        </div>
+        <div class="text-center">
+            <a href="">
+                Forgot Password
+            </a>
+        </div>
         <a href="../register/register.template.client.html">
-            Sign Up
+            <button class="btn btn-success btn-block container">
+            Register
+            </button>
         </a>
 
         <div>

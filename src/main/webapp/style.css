@@ -10,3 +10,9 @@
 .container {
     padding-top: 58px;
 }
+
+.vcc-profile-container-border {
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: gray;
+}
