@@ -5,13 +5,14 @@
     <title>Title</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+    <link href="style-editor.css" rel="stylesheet"/>
 </head>
 <body>
 
 <div class="container">
 
     <div>
-        <h1>Editor</h1>
+        <h1 class="display-2">Editor</h1>
     </div>
 
 <!--    top row-->
@@ -44,26 +45,23 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link disabled"
+                    <a class="nav-link"
                        href="#"
-                       tabindex="-1"
-                       aria-disabled="true">
+                       tabindex="-1">
                         Lesson 4
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link disabled"
+                    <a class="nav-link"
                        href="#"
-                       tabindex="-1"
-                       aria-disabled="true">
+                       tabindex="-1">
                         Lesson 5
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link disabled"
+                    <a class="nav-link"
                        href="#"
-                       tabindex="-1"
-                       aria-disabled="true">
+                       tabindex="-1">
                         Lesson 6
                     </a>
                 </li>
@@ -83,19 +81,35 @@
     <div class="row">
         <div class="col-4">
             <ul class="list-group">
-                <li class="list-group-item">
+                <li class="list-group-item active">
                     Module 1 - jQuery
-                    <i class="pull-right fa fa-trash"></i>
-<!--                    TODO: COME BACK HERE FOR ICONS AND FONTS AND MAKE IT UNIFORM-->
+                    <i class="pull-right fa fa-trash my-auto"></i>
                 </li>
-                <li class="list-group-item">Module 2 - React</li>
-                <li class="list-group-item">Module 3 - Redux</li>
-                <li class="list-group-item">Module 4 - Native</li>
-                <li class="list-group-item">Module 5 - Angular</li>
-                <li class="list-group-item">Module 6 - Node</li>
-                <li class="list-group-item">Module 7 - Mongo</li>
                 <li class="list-group-item">
-<!--                    TODO: GET RID OF THIS BORDER SOMEHOW-->
+                    Module 2 - React
+                    <i class="pull-right fa fa-trash"></i>
+                </li>
+                <li class="list-group-item">
+                    Module 3 - Redux
+                    <i class="pull-right fa fa-trash"></i>
+                </li>
+                <li class="list-group-item">
+                    Module 4 - Native
+                    <i class="pull-right fa fa-trash"></i>
+                </li>
+                <li class="list-group-item">
+                    Module 5 - Angular
+                    <i class="pull-right fa fa-trash"></i>
+                </li>
+                <li class="list-group-item">
+                    Module 6 - Node
+                    <i class="pull-right fa fa-trash"></i>
+                </li>
+                <li class="list-group-item">
+                    Module 7 - Mongo
+                    <i class="pull-right fa fa-trash"></i>
+                </li>
+                <li class="list-group-item wbdv-vcc-borderless">
                     <i class="pull-right fa fa-plus"></i>
                 </li>
 
@@ -103,7 +117,6 @@
         </div>
 
         <div class="col-8">
-
             <ul class="nav nav-pills">
                 <li class="nav-item">
                     <a class="nav-link active"
@@ -125,10 +138,9 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link disabled"
+                    <a class="nav-link"
                        href="#"
-                       tabindex="-1"
-                       aria-disabled="true">
+                       tabindex="-1">
                         Topic 4
                     </a>
                 </li>
@@ -141,7 +153,27 @@
                     </a>
                 </li>
             </ul>
+        <div class="row">
+            <div class="col-7">
+            </div>
+            <div class="col-sm-2">
+                <a href="../index.html"
+                   class="btn btn-block btn-success">
+                    Save
+                </a>
+            </div>
+<!--            my-auto (below) is from https://medium.com/wdstack/bootstrap-4-vertical-center-1211448a2eff-->
+            <div class="col-sm-2 my-auto">
+                <span class="align-middle">
+                    Preview
+                </span>
+            </div>
+            <div class="col-sm-1 my-auto">
+                <i class="fa fa-toggle-off fa-2x pull-left"></i>
+            </div>
         </div>
+        </div>
+
 
     </div>
 </div>
