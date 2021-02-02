@@ -1,5 +1,5 @@
 .vcc-sticky-nav-bar {
-    background-color: cadetblue;
+    background-color: blue;
     padding: 10px;
     position: fixed;
     width: 100%;
@@ -7,12 +7,29 @@
     vertical-align: center;
 }
 
-.container {
-    padding-top: 58px;
-}
-
 .vcc-profile-container-border {
     border-bottom-width: 1px;
     border-bottom-style: solid;
     border-bottom-color: gray;
+}
+
+.wbdv-vcc-vert-padding {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.wbdv-vcc-horizontal-padding {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.wbdv-vcc-encase {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+li.wbdv-vcc-stretch-list {
+    margin: 15px;
 }
