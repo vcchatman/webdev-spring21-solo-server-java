@@ -33,3 +33,7 @@
 li.wbdv-vcc-stretch-list {
     margin: 15px;
 }
+
+.wbdv-hidden {
+    display: none;
+}
