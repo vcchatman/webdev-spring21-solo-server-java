@@ -6,7 +6,7 @@ var userService = new AdminUserServiceClient();
 (function () {
     const users = [
 
-        {id: 123, username: 'alice', firstName: 'Alice', lastName: 'Cooper', role: 'FACULTY'},
+        {id: 123, username: 'alice', firstName: 'Alice', lastName: 'Cooper', role: 'FACULTY'}, // these are JSON objects
         {id: 234, username: 'bob', firstName: 'Bob', lastName: 'Dylan', role: 'STUDENT'},
         {id: 345, username: 'charlie', firstName: 'Charlie', lastName: 'Parker', role: 'ADMIN'},
         {id: 456, username: 'dan', firstName: 'Dan', lastName: 'Steely', role: 'FACULTY'}
@@ -26,6 +26,16 @@ var userService = new AdminUserServiceClient();
     // console.log(theHeading)
 
     var theTableBody = jQuery("tbody")
+
+    function createUser(user) {
+        users.push(user)
+        renderUsers(users)
+    }
+
+    createUser({id: 567, username: 'edith', firstName: 'Edith', lastName: 'Piaf', role: 'STUDENT'})
+    createUser({id: 678, username: 'frank', firstName: 'Frank', lastName: 'Sinatra', role: 'ADMIN'})
+    createUser({id: 789, username: 'george', firstName: 'George', lastName: 'Harrison', role: 'FACULTY'})
+    createUser({id: 91011, username: 'hank', firstName: 'Hank', lastName: 'Williams', role: 'STUDENT'})
 
     function renderUsers(users) {
         for (var i = 0; i < users.length; i++) {
