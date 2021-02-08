@@ -1,10 +1,53 @@
+
+var users
+
+var userService = new AdminUserServiceClient();
+
 (function () {
     const users = [
-        {id: 123, username: 'alice', firstName: 'Alice', lastName: 'Cooper'},
-        {id: 234, username: 'bob', firstName: 'Bob', lastName: 'Dylan'},
-        {id: 345, username: 'charlie', firstName: 'Charlie', lastName: 'Parker'},
-        {id: 456, username: 'dan', firstName: 'Dan', lastName: 'Steely'}
+
+        {id: 123, username: 'alice', firstName: 'Alice', lastName: 'Cooper', role: 'FACULTY'},
+        {id: 234, username: 'bob', firstName: 'Bob', lastName: 'Dylan', role: 'STUDENT'},
+        {id: 345, username: 'charlie', firstName: 'Charlie', lastName: 'Parker', role: 'ADMIN'},
+        {id: 456, username: 'dan', firstName: 'Dan', lastName: 'Steely', role: 'FACULTY'}
     ]
+
+    var theHeading = jQuery("h1#user-admin-heading") //# means referencing id, . means referencing classes
+    // theHeading.remove()
+    // theHeading.html("User-Admin Editor")
+    // theHeading.css("background-color", "blue")
+    // theHeading.css("color", "yellow")
+    theHeading
+        .html("User-Admin Editor")
+        .css("background-color", "blue")
+        .css("color", "yellow")
+        .append(" - Add/Remove Users")
+        .append("<button>Go!</button>")
+    // console.log(theHeading)
+
+    var theTableBody = jQuery("tbody")
+
+    function renderUsers(users) {
+        for (var i = 0; i < users.length; i++) {
+            var user = users[i]
+            // theTableBody.remove()
+            theTableBody
+                .append(`<tr class="wbdv-template wbdv-user wbdv-hidden">
+                    <td class="wbdv-username">${user.username}</td>
+                    <td>&nbsp;</td>
+                    <td class="wbdv-first-name">${user.firstName}</td>
+                    <td class="wbdv-last-name">${user.lastName}</td>
+                    <td class="wbdv-role">${user.role}</td>
+                    <td class="wbdv-actions">
+                        <span class="pull-right">
+                            <i class="fa-2x fa fa-times wbdv-remove"></i>
+                            <i class="fa-2x fa fa-pencil wbdv-edit"></i>
+                        </span>
+                    </td>
+                </tr>`)
+        }
+    }
+
 
     const rowTemplate = jQuery('.wbdv-template')
     const tbody = jQuery('tbody');
