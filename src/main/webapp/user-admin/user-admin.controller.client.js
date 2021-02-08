@@ -37,6 +37,7 @@ var userService = new AdminUserServiceClient();
     createUser({id: 789, username: 'george', firstName: 'George', lastName: 'Harrison', role: 'FACULTY'})
     createUser({id: 91011, username: 'hank', firstName: 'Hank', lastName: 'Williams', role: 'STUDENT'})
 
+
     function renderUsers(users) {
         for (var i = 0; i < users.length; i++) {
             var user = users[i]
@@ -59,19 +60,21 @@ var userService = new AdminUserServiceClient();
     }
 
 
+
+
     const rowTemplate = jQuery('.wbdv-template')
     const tbody = jQuery('tbody');
     renderUsers(users)
 
-    function renderUsers (users) {
-        for (var u in users) { // for loop retrieving all users
-            const user = users[u]
-            const rowClone = rowTemplate.clone();
-            rowClone.removeClass('wbdv-hidden')
-            rowClone.find('.wbdv-username').html(user.username);
-            rowClone.find('.wbdv-first-name').html(user.firstName);
-            rowClone.find('.wbdv-last-name').html(user.lastName);
-            tbody.append(rowClone);
-        }
-    }
+    // function renderUsers (users) {
+    //     for (var u in users) { // for loop retrieving all users
+    //         const user = users[u]
+    //         const rowClone = rowTemplate.clone();
+    //         rowClone.removeClass('wbdv-hidden')
+    //         rowClone.find('.wbdv-username').html(user.username);
+    //         rowClone.find('.wbdv-first-name').html(user.firstName);
+    //         rowClone.find('.wbdv-last-name').html(user.lastName);
+    //         tbody.append(rowClone);
+    //     }
+    // }
 })()
