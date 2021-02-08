@@ -4,9 +4,32 @@ var users
 var userService = new AdminUserServiceClient();
 
 (function () {
+
+    var addUserBtn = jQuery("#wbdv-create-user") // to listening for incoming click event
+
+    // function addUser() { // this and addUserBtn.click below have same functionality but this one is not a lambda function
+    //     createUser({
+    //         username: 'NEW USER',
+    //         firstName: "First",
+    //         lastName: "Last",
+    //         role: 'ADMIN'})
+    // }
+    // addUserBtn.click(addUser)
+
+    addUserBtn.click(function () { // this is an anonymous/lambda function
+        // alert("adding user")
+        createUser({
+            username: 'NEW USER',
+            firstName: "First",
+            lastName: "Last",
+            role: 'ADMIN'})
+    })
+
+    // all these new methods, .click, .empty, .css, .html, etc. - they are all added by jQuery because now a jQuery objet
+
     const users = [
 
-        {id: 123, username: 'alice', firstName: 'Alice', lastName: 'Cooper', role: 'FACULTY'}, // these are JSON objects
+        {id: 123, username: 'alice', firstName: 'Alice', lastName: 'Coltrane', role: 'FACULTY'}, // these are JSON objects
         {id: 234, username: 'bob', firstName: 'Bob', lastName: 'Dylan', role: 'STUDENT'},
         {id: 345, username: 'charlie', firstName: 'Charlie', lastName: 'Parker', role: 'ADMIN'},
         {id: 456, username: 'dan', firstName: 'Dan', lastName: 'Steely', role: 'FACULTY'}
@@ -39,11 +62,12 @@ var userService = new AdminUserServiceClient();
 
 
     function renderUsers(users) {
+        theTableBody.empty()
         for (var i = 0; i < users.length; i++) {
             var user = users[i]
             // theTableBody.remove()
             theTableBody
-                .append(`<tr class="wbdv-template wbdv-user wbdv-hidden">
+                .prepend(`<tr class="wbdv-template wbdv-user wbdv-hidden">
                     <td class="wbdv-username">${user.username}</td>
                     <td>&nbsp;</td>
                     <td class="wbdv-first-name">${user.firstName}</td>
