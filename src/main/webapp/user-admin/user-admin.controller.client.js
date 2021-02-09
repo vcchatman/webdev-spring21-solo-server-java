@@ -19,17 +19,27 @@ function createUser(user) {
         })
 }
 
-var selectedUser = null
-function selectUser(event) {
-    var selectBtn = jQuery(event.target)
-    var theId = selectBtn.attr("id")
-    selectedUser = users.find(user => user._id === theID)
-    $usernameFld.val(selectedUser.username)
-    $passwordFld.val(selectedUser.password)
-    $firstNameFld.val(selectedUser.firstName)
-    $lastNameFld.val(selectedUser.lastName)
-    $roleFld.val(selectedUser.role)
-
+function renderUsers(users) {
+    $theTableBody.empty()
+    for (var i = 0; i < users.length; i++) {
+        var user = users[i]
+        $theTableBody.prepend(`<tr class="wbdv-template wbdv-user wbdv-hidden">
+                    <td class="wbdv-usernameFld">${user.username}</td>
+                    <td class="wbdv-passwordFld">${user.password}</td>
+                    <td class="wbdv-first-nameFld">${user.firstName}</td>
+                    <td class="wbdv-last-nameFld">${user.lastName}</td>
+                    <td class="wbdv-roleFld">${user.role}</td>
+                    <td class="wbdv-actions">
+                        <span class="pull-right">
+                            <i class="wbdv-removeIcon fa-2x fa fa-times" id="${user._id}"></i>
+                            <i class="wbdv-editIcon fa-2x fa fa-pencil" id="${user._id}"></i>
+                        </span>
+                    </td>
+                </tr>
+            `)
+    }
+    jQuery(".wbdv-removeIcon").click(deleteUser)
+    jQuery(".wbdv-editIcon").click(selectUser)
 }
 
 function deleteUser(event) {
@@ -49,30 +59,16 @@ function deleteUser(event) {
         )
 }
 
-function renderUsers(users) {
-    $theTableBody.empty()
-    for (var i = 0; i < users.length; i++) {
-        var user = users[i]
-        $theTableBody.prepend(`<tr class="wbdv-template wbdv-user wbdv-hidden">
-                    <td class="wbdv-usernameFld">${user.username}</td>
-                    <td class="wbdv-passwordFld">${user.password}</td>
-                    <td class="wbdv-first-nameFld">${user.firstName}</td>
-                    <td class="wbdv-last-nameFld">${user.lastName}</td>
-                    <td class="wbdv-roleFld">${user.role}</td>
-                    <td class="wbdv-actions">
-                        <span class="pull-right">
-                            <i class="fa-2x fa fa-times wbdv-remove" 
-                               id="${user._id}"></i>
-                            <i class="fa-2x fa fa-pencil wbdv-edit"
-                               id="${user._id}"></i>
-                        </span>
-                    </td>
-                </tr>
-            `)
-    }
-
-    jQuery(".wbdv-removeIcon").click(deleteUser)
-    jQuery(".wbdv-editIcon").click(selectUser)
+var selectedUser = null
+function selectUser(event) {
+    var selectBtn = jQuery(event.target)
+    var theId = selectBtn.attr("id")
+    selectedUser = users.find(user => user._id === theID)
+    $usernameFld.val(selectedUser.username)
+    $passwordFld.val(selectedUser.password)
+    $firstNameFld.val(selectedUser.firstName)
+    $lastNameFld.val(selectedUser.lastName)
+    $roleFld.val(selectedUser.role)
 }
 
 function updateUser() {
