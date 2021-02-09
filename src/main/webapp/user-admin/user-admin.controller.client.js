@@ -23,7 +23,7 @@ var selectedUser = null
 function selectUser(event) {
     var selectBtn = jQuery(event.target)
     var theId = selectBtn.attr("id")
-    var selectedUser = users.find(user => user._id === theID)
+    selectedUser = users.find(user => user._id === theID)
     $usernameFld.val(selectedUser.username)
     $passwordFld.val(selectedUser.password)
     $firstNameFld.val(selectedUser.firstName)
@@ -71,8 +71,23 @@ function renderUsers(users) {
             `)
     }
 
-    jQuery(".wbdv-remove").click(deleteUser)
-    jQuery(".wbdv-edit").click(selectUser)
+    jQuery(".wbdv-removeIcon").click(deleteUser)
+    jQuery(".wbdv-editIcon").click(selectUser)
+}
+
+function updateUser() {
+    console.log(selectUser())
+    selectUser.username = $usernameFld.val()
+    selectUser.password = $passwordFld.val()
+    selectUser.firstName = $firstNameFld.val()
+    selectUser.lastName = $lastNameFld.val()
+    selectUser.role = $roleFld.val()
+    userService.updateUser(selectedUser._id, selectedUser)
+        .then(function (status) {
+            var index = users.findIndex(user => user._id === selectedUser._id)
+            users[index] = selectedUser
+            renderUsers(users)
+        })
 }
 
 function main() {
@@ -81,12 +96,13 @@ function main() {
     $firstNameFld = $(".wbdv-firstNameFld")
     $lastNameFld = $(".wbdv-lastNameFld")
     $roleFld = $(".wbdv-roleFld")
-    $searchIcon = $(".wbdv-searchFld")
-    $createIcon = $(".wbdv-createFld")
-    $updateIcon = $(".wbdv-updateFld")
+    $searchIcon = $(".wbdv-searchIcon")
+    $createIcon = $(".wbdv-createIcon")
+    $updateIcon = $(".wbdv-updateIcon")
     $addUserBtn = jQuery("#wbdv-create-user") // to listening for incoming click event
     $theTableBody = jQuery("tbody")
 
+    $updateIcon.click(updateUser)
     $createIcon.click(() => {
         createUser({
             username: $usernameFld.val(),
