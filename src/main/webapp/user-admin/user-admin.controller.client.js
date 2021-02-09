@@ -8,8 +8,7 @@ var $createIcon
 var $updateIcon
 var $addUserBtn
 var $theTableBody
-var userService = new AdminUserServiceClient();
-
+var userService = new AdminUserServiceClient()
 var users = [];
 
 function createUser(user) {
@@ -20,11 +19,24 @@ function createUser(user) {
         })
 }
 
+var selectedUser = null
+function selectUser(event) {
+    var selectBtn = jQuery(event.target)
+    var theId = selectBtn.attr("id")
+    var selectedUser = users.find(user => user._id === theID)
+    $usernameFld.val(selectedUser.username)
+    $passwordFld.val(selectedUser.password)
+    $firstNameFld.val(selectedUser.firstName)
+    $lastNameFld.val(selectedUser.lastName)
+    $roleFld.val(selectedUser.role)
+
+}
+
 function deleteUser(event) {
     console.log(event.target)
     var deleteBtn = jQuery(event.target) // this means jQuery can take both css classes and dom objects to act on
-    var theClass = deleteBtn.attr("class");
-    var userIndex = deleteBtn.attr("id");
+    var theClass = deleteBtn.attr("class")
+    var userIndex = deleteBtn.attr("id")
     var theId = users[userIndex]._id
     console.log(theClass)
     console.log(theId)
@@ -35,7 +47,6 @@ function deleteUser(event) {
                 renderUsers(users)
             }
         )
-
 }
 
 function renderUsers(users) {
@@ -43,26 +54,25 @@ function renderUsers(users) {
     for (var i = 0; i < users.length; i++) {
         var user = users[i]
         $theTableBody.prepend(`<tr class="wbdv-template wbdv-user wbdv-hidden">
-                    <td class="wbdv-username">${user.username}</td>
-                    <td>&nbsp;</td>
-                    <td class="wbdv-first-name">${user.firstName}</td>
-                    <td class="wbdv-last-name">${user.lastName}</td>
-                    <td class="wbdv-role">${user.role}</td>
+                    <td class="wbdv-usernameFld">${user.username}</td>
+                    <td class="wbdv-passwordFld">${user.password}</td>
+                    <td class="wbdv-first-nameFld">${user.firstName}</td>
+                    <td class="wbdv-last-nameFld">${user.lastName}</td>
+                    <td class="wbdv-roleFld">${user.role}</td>
                     <td class="wbdv-actions">
                         <span class="pull-right">
                             <i class="fa-2x fa fa-times wbdv-remove" 
-                               id="${i}"></i>
+                               id="${user._id}"></i>
                             <i class="fa-2x fa fa-pencil wbdv-edit"
-                               id="${i}"></i>
+                               id="${user._id}"></i>
                         </span>
                     </td>
                 </tr>
             `)
     }
 
-    jQuery(".wbdv-remove")
-        .click(function (deleteUser) {
-        })
+    jQuery(".wbdv-remove").click(deleteUser)
+    jQuery(".wbdv-edit").click(selectUser)
 }
 
 function main() {
