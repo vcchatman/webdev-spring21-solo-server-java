@@ -11,6 +11,7 @@ var $theTableBody
 var userService = new AdminUserServiceClient();
 
 var users = [];
+
 function createUser(user) {
     users.push(user)
     renderUsers(users)
@@ -70,7 +71,7 @@ function main() {
     $theTableBody = jQuery("tbody")
 
     $createIcon.click(() => {
-        createUser ( {
+        createUser({
             username: $usernameFld.val(),
             password: $passwordFld.val(),
             firstName: $firstNameFld.val(),
@@ -93,6 +94,11 @@ function main() {
     //         role: 'ADMIN'
     //     })
     // })
-    AdminUserServiceClient.findAllUsers()
+    userService.findAllUsers()
+        .then(function (actualUsersFromServer) {
+            users = actualUsersFromServer
+            renderUsers(users)
+        })
 }
+
 jQuery(main)
