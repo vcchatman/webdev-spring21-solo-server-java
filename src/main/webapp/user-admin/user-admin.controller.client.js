@@ -3,17 +3,7 @@
 // var userService = new AdminUserServiceClient();
 
 
-
 var addUserBtn = jQuery("#wbdv-create-user") // to listening for incoming click event
-
-// function addUser() { // this and addUserBtn.click below have same functionality but this one is not a lambda function
-//     createUser({
-//         username: 'NEW USER',
-//         firstName: "First",
-//         lastName: "Last",
-//         role: 'ADMIN'})
-// }
-// addUserBtn.click(addUser)
 
 addUserBtn.click(function () { // this is an anonymous/lambda function
         // alert("adding user")
@@ -26,28 +16,13 @@ addUserBtn.click(function () { // this is an anonymous/lambda function
     }
 )
 
-// all these new methods, .click, .empty, .css, .html, etc. - they are all added by jQuery because now a jQuery objet
-
 const users = [
 
-    {id: 123, username: 'alice', firstName: 'Alice', lastName: 'Coltrane', role: 'FACULTY'}, // these are JSON objects
-    {id: 234, username: 'bob', firstName: 'Bob', lastName: 'Dylan', role: 'STUDENT'},
-    {id: 345, username: 'charlie', firstName: 'Charlie', lastName: 'Parker', role: 'ADMIN'},
-    {id: 456, username: 'dan', firstName: 'Dan', lastName: 'Steely', role: 'FACULTY'}
+    {username: 'alice', firstName: 'Alice', lastName: 'Coltrane', role: 'FACULTY'}, // these are JSON objects
+    {username: 'bob', firstName: 'Bob', lastName: 'Dylan', role: 'STUDENT'},
+    {username: 'charlie', firstName: 'Charlie', lastName: 'Parker', role: 'ADMIN'},
+    {username: 'dan', firstName: 'Dan', lastName: 'Steely', role: 'FACULTY'}
 ]
-
-// var theHeading = jQuery("h1#user-admin-heading") //# means referencing id, . means referencing classes
-// theHeading.remove()
-// theHeading.html("User-Admin Editor")
-// theHeading.css("background-color", "blue")
-// theHeading.css("color", "yellow")
-// theHeading
-//     .html("User-Admin Editor")
-//     .css("background-color", "blue")
-//     .css("color", "yellow")
-//     .append(" - Add/Remove Users")
-//     .append("<button>Go!</button>")
-// console.log(theHeading)
 
 var theTableBody = jQuery("tbody")
 
@@ -98,28 +73,27 @@ function renderUsers(users) {
         })
 }
 
-var $usernameFld = $(".wbdv-usernameFld")
+var $usernameFld = $(".wbdv-usernameFld") // $ is to show that these variables aren't storing primitive data types, they're storing objects that are bound to the DOM
 var $passwordFld = $(".wbdv-passwordFld")
 var $firstNameFld = $(".wbdv-firstNameFld")
 var $lastNameFld = $(".wbdv-lastNameFld")
 var $roleFld = $(".wbdv-roleFld")
-var $searchFld = $(".wbdv-searchFld")
-var $createFld = $(".wbdv-createFld")
-var $updateFld = $(".wbdv-updateFld")
+var $searchIcon = $(".wbdv-searchFld")
+var $createIcon = $(".wbdv-createFld")
+var $updateIcon = $(".wbdv-updateFld")
 
-
-// const rowTemplate = jQuery('.wbdv-template')
-// const tbody = jQuery('tbody');
-// renderUsers(users)
-
-// function renderUsers (users) {
-//     for (var u in users) { // for loop retrieving all users
-//         const user = users[u]
-//         const rowClone = rowTemplate.clone();
-//         rowClone.removeClass('wbdv-hidden')
-//         rowClone.find('.wbdv-username').html(user.username);
-//         rowClone.find('.wbdv-first-name').html(user.firstName);
-//         rowClone.find('.wbdv-last-name').html(user.lastName);
-//         tbody.append(rowClone);
-//     }
-// }
+$createIcon.click(function () {
+    var newUser = {
+        username: $usernameFld.val(),
+        password: $passwordFld.val(),
+        firstName: $firstNameFld.val(),
+        lastName: $lastNameFld.val(),
+        role: $roleFld.val()
+    }
+    createUser(newUser)
+    $usernameFld.val("")
+    $passwordFld.val("")
+    $firstNameFld.val("")
+    $lastNameFld.val("")
+    $roleFld.val("")
+})
