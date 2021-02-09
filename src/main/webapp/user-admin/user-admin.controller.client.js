@@ -31,7 +31,7 @@ function renderUsers(users) {
                     <td class="wbdv-roleFld">${user.role}</td>
                     <td class="wbdv-actions">
                         <span class="pull-right">
-                            <i class="wbdv-removeIcon fa-2x fa fa-times" id="${user._id}"></i>
+                            <i class="wbdv-removeIcon fa-2x fa fa-times" id="${i}"></i>
                             <i class="wbdv-editIcon fa-2x fa fa-pencil" id="${user._id}"></i>
                         </span>
                     </td>
@@ -41,6 +41,19 @@ function renderUsers(users) {
     jQuery(".wbdv-removeIcon").click(deleteUser)
     jQuery(".wbdv-editIcon").click(selectUser)
 }
+
+// {"_id":"6022ac73e1916a0017ebfed1",
+//     "username":"test",
+//     "password":"test_pass",
+//     "firstName":"Vanessa",
+//     "lastName":"Chatman",
+//     "role":"STUDENT",
+//     "_nuid":"vcchatman",
+//     "_domain":"users",
+//     "_createdAt":"2021-02-09T15:38:27.612Z",
+//     "_updatedAt":"2021-02-09T15:38:27.612Z",
+//     "__v":0}
+
 
 function deleteUser(event) {
     console.log(event.target)
@@ -53,7 +66,7 @@ function deleteUser(event) {
 
     userService.deleteUser(theId)
         .then(function (status) {
-                users.splice(theId, 1)
+                users.splice(userIndex, 1)
                 renderUsers(users)
             }
         )
@@ -63,7 +76,7 @@ var selectedUser = null
 function selectUser(event) {
     var selectBtn = jQuery(event.target)
     var theId = selectBtn.attr("id")
-    selectedUser = users.find(user => user._id === theID)
+    selectedUser = users.find(user => user._id === theId)
     $usernameFld.val(selectedUser.username)
     $passwordFld.val(selectedUser.password)
     $firstNameFld.val(selectedUser.firstName)
@@ -123,6 +136,7 @@ function main() {
             role: 'ADMIN'
         })
     })
+
     userService.findAllUsers()
         .then(function (actualUsersFromServer) {
             users = actualUsersFromServer
