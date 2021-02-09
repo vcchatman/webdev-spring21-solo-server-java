@@ -1,41 +1,22 @@
-// var users
 
 // var userService = new AdminUserServiceClient();
 
+var $usernameFld
+var $passwordFld
+var $firstNameFld
+var $lastNameFld
+var $roleFld
+var $searchIcon
+var $createIcon
+var $updateIcon
+var $addUserBtn
+var $theTableBody
 
-var addUserBtn = jQuery("#wbdv-create-user") // to listening for incoming click event
-
-addUserBtn.click(function () { // this is an anonymous/lambda function
-        // alert("adding user")
-        createUser({
-            username: 'NEW USER',
-            firstName: "First",
-            lastName: "Last",
-            role: 'ADMIN'
-        })
-    }
-)
-
-const users = [
-
-    {username: 'alice', firstName: 'Alice', lastName: 'Coltrane', role: 'FACULTY'}, // these are JSON objects
-    {username: 'bob', firstName: 'Bob', lastName: 'Dylan', role: 'STUDENT'},
-    {username: 'charlie', firstName: 'Charlie', lastName: 'Parker', role: 'ADMIN'},
-    {username: 'dan', firstName: 'Dan', lastName: 'Steely', role: 'FACULTY'}
-]
-
-var theTableBody = jQuery("tbody")
-
+var users = [];
 function createUser(user) {
     users.push(user)
     renderUsers(users)
 }
-
-createUser({id: 567, username: 'edith', firstName: 'Edith', lastName: 'Piaf', role: 'STUDENT'})
-createUser({id: 678, username: 'frank', firstName: 'Frank', lastName: 'Sinatra', role: 'ADMIN'})
-createUser({id: 789, username: 'george', firstName: 'George', lastName: 'Harrison', role: 'FACULTY'})
-createUser({id: 91011, username: 'hank', firstName: 'Hank', lastName: 'Williams', role: 'STUDENT'})
-
 
 function renderUsers(users) {
     theTableBody.empty()
@@ -60,6 +41,7 @@ function renderUsers(users) {
                 </tr>
             `)
     }
+
     jQuery(".wbdv-remove")
         .click(function (event) {
             console.log(event.target)
@@ -73,27 +55,44 @@ function renderUsers(users) {
         })
 }
 
-var $usernameFld = $(".wbdv-usernameFld") // $ is to show that these variables aren't storing primitive data types, they're storing objects that are bound to the DOM
-var $passwordFld = $(".wbdv-passwordFld")
-var $firstNameFld = $(".wbdv-firstNameFld")
-var $lastNameFld = $(".wbdv-lastNameFld")
-var $roleFld = $(".wbdv-roleFld")
-var $searchIcon = $(".wbdv-searchFld")
-var $createIcon = $(".wbdv-createFld")
-var $updateIcon = $(".wbdv-updateFld")
+function main() {
+    $usernameFld = $(".wbdv-usernameFld") // $ is to show that these variables aren't storing primitive data types, they're storing objects that are bound to the DOM
+    $passwordFld = $(".wbdv-passwordFld")
+    $firstNameFld = $(".wbdv-firstNameFld")
+    $lastNameFld = $(".wbdv-lastNameFld")
+    $roleFld = $(".wbdv-roleFld")
+    $searchIcon = $(".wbdv-searchFld")
+    $createIcon = $(".wbdv-createFld")
+    $updateIcon = $(".wbdv-updateFld")
+    $addUserBtn = jQuery("#wbdv-create-user") // to listening for incoming click event
+    $theTableBody = jQuery("tbody")
 
-$createIcon.click(function () {
-    var newUser = {
-        username: $usernameFld.val(),
-        password: $passwordFld.val(),
-        firstName: $firstNameFld.val(),
-        lastName: $lastNameFld.val(),
-        role: $roleFld.val()
-    }
-    createUser(newUser)
-    $usernameFld.val("")
-    $passwordFld.val("")
-    $firstNameFld.val("")
-    $lastNameFld.val("")
-    $roleFld.val("")
-})
+    $createIcon.click(function () {
+        var newUser = {
+            username: $usernameFld.val(),
+            password: $passwordFld.val(),
+            firstName: $firstNameFld.val(),
+            lastName: $lastNameFld.val(),
+            role: $roleFld.val()
+        }
+        createUser(newUser)
+        $usernameFld.val("")
+        $passwordFld.val("")
+        $firstNameFld.val("")
+        $lastNameFld.val("")
+        $roleFld.val("")
+    })
+
+    $addUserBtn.click(function () { // this is an anonymous/lambda function
+        // alert("adding user")
+        createUser({
+            username: 'NEW USER',
+            firstName: "First",
+            lastName: "Last",
+            role: 'ADMIN'
+        })
+    })
+}
+
+
+jQuery(main)
