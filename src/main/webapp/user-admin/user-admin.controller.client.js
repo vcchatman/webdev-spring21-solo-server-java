@@ -1,6 +1,3 @@
-
-// var userService = new AdminUserServiceClient();
-
 var $usernameFld
 var $passwordFld
 var $firstNameFld
@@ -11,11 +8,24 @@ var $createIcon
 var $updateIcon
 var $addUserBtn
 var $theTableBody
+var userService = new AdminUserServiceClient();
 
 var users = [];
 function createUser(user) {
     users.push(user)
     renderUsers(users)
+}
+
+function deleteUser(event) {
+    console.log(event.target)
+    var deleteBtn = jQuery(event.target) // this means jQuery can take both css classes and dom objects to act on
+    var theClass = deleteBtn.attr("class");
+    var theId = deleteBtn.attr("id");
+    console.log(theClass)
+    console.log(theId)
+    users.splice(theId, 1)
+    renderUsers(users)
+
 }
 
 function renderUsers(users) {
@@ -43,15 +53,7 @@ function renderUsers(users) {
     }
 
     jQuery(".wbdv-remove")
-        .click(function (event) {
-            console.log(event.target)
-            var deleteBtn = jQuery(event.target) // this means jQuery can take both css classes and dom objects to act on
-            var theClass = deleteBtn.attr("class");
-            var theId = deleteBtn.attr("id");
-            console.log(theClass)
-            console.log(theId)
-            users.splice(theId, 1)
-            renderUsers(users)
+        .click(function (deleteUser) {
         })
 }
 
@@ -67,15 +69,14 @@ function main() {
     $addUserBtn = jQuery("#wbdv-create-user") // to listening for incoming click event
     $theTableBody = jQuery("tbody")
 
-    $createIcon.click(function () {
-        var newUser = {
+    $createIcon.click(() => {
+        createUser ( {
             username: $usernameFld.val(),
             password: $passwordFld.val(),
             firstName: $firstNameFld.val(),
             lastName: $lastNameFld.val(),
             role: $roleFld.val()
-        }
-        createUser(newUser)
+        })
         $usernameFld.val("")
         $passwordFld.val("")
         $firstNameFld.val("")
@@ -83,16 +84,15 @@ function main() {
         $roleFld.val("")
     })
 
-    $addUserBtn.click(function () { // this is an anonymous/lambda function
-        // alert("adding user")
-        createUser({
-            username: 'NEW USER',
-            firstName: "First",
-            lastName: "Last",
-            role: 'ADMIN'
-        })
-    })
+    // $addUserBtn.click(function () { // this is an anonymous/lambda function
+    //     // alert("adding user")
+    //     createUser({
+    //         username: 'NEW USER',
+    //         firstName: "First",
+    //         lastName: "Last",
+    //         role: 'ADMIN'
+    //     })
+    // })
+    AdminUserServiceClient.findAllUsers()
 }
-
-
 jQuery(main)
