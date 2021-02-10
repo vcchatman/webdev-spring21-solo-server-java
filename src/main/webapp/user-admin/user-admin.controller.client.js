@@ -24,9 +24,9 @@ function renderUsers(users) {
     for (var i = 0; i < users.length; i++) {
         var user = users[i]
         $theTableBody.append(`
-                <tr class="wbdv-template wbdv-user wbdv-hidden">
+                <tr class="wbdv-template wbdv-user">
                     <td class="wbdv-usernameFld">${user.username}</td>
-                    <td class="wbdv-passwordFld">${user.password}</td>
+                    <td class="wbdv-passwordFld" type="password">${user.password}</td>
                     <td class="wbdv-first-nameFld">${user.firstName}</td>
                     <td class="wbdv-last-nameFld">${user.lastName}</td>
                     <td class="wbdv-roleFld">${user.role}</td>
@@ -101,25 +101,37 @@ function main() {
     $searchIcon = $(".wbdv-searchIcon")
     $createIcon = $(".wbdv-createIcon")
     $updateIcon = $(".wbdv-updateIcon")
-    $addUserBtn = jQuery("#wbdv-create-user") // to listening for incoming click event
+    $addUserBtn = $("#wbdv-create-user") // to listening for incoming click event
     $theTableBody = jQuery("tbody")
 
     $updateIcon.click(updateUser)
 
 
     $createIcon.click(() => {
-        createUser({
-            username: $usernameFld.val(),
-            password: $passwordFld.val(),
-            firstName: $firstNameFld.val(),
-            lastName: $lastNameFld.val(),
-            role: $roleFld.val()
-        })
-        $usernameFld.val("")
-        $passwordFld.val("")
-        $firstNameFld.val("")
-        $lastNameFld.val("")
-        $roleFld.val("")
+        if ($usernameFld.val() === "") {
+            alert("Enter username.")
+        } else if ($passwordFld.val() === "") {
+            alert("Enter password.")
+        } else if ($firstNameFld.val() === "") {
+            alert("Enter first name.")
+        } else if ($lastNameFld.val() === "") {
+            alert("Enter last name.")
+        } else if ($roleFld.val() === "") {
+            alert("Select role.")
+        } else {
+            createUser({
+                username: $usernameFld.val(),
+                password: $passwordFld.val(),
+                firstName: $firstNameFld.val(),
+                lastName: $lastNameFld.val(),
+                role: $roleFld.val()
+            })
+            $usernameFld.val("")
+            $passwordFld.val("")
+            $firstNameFld.val("")
+            $lastNameFld.val("")
+            $roleFld.val("")
+        }
     })
 
     $addUserBtn.click(function () { // this is an anonymous/lambda function
