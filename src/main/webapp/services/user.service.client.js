@@ -20,7 +20,7 @@ function AdminUserServiceClient() {
         })
     }
 
-    function findAllUsers() {
+    function findAllUsers() { // GET not mentioned as I think it's default
         return fetch(self.url).then(function (response) {
             return response.json()
         })

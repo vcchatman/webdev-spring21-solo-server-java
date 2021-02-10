@@ -23,7 +23,8 @@ function renderUsers(users) {
     $theTableBody.empty()
     for (var i = 0; i < users.length; i++) {
         var user = users[i]
-        $theTableBody.prepend(`<tr class="wbdv-template wbdv-user wbdv-hidden">
+        $theTableBody.append(`
+                <tr class="wbdv-template wbdv-user wbdv-hidden">
                     <td class="wbdv-usernameFld">${user.username}</td>
                     <td class="wbdv-passwordFld">${user.password}</td>
                     <td class="wbdv-first-nameFld">${user.firstName}</td>
@@ -84,6 +85,11 @@ function updateUser() {
             users[index] = selectedUser
             renderUsers(users)
         })
+    $usernameFld.val("")
+    $passwordFld.val("")
+    $firstNameFld.val("")
+    $lastNameFld.val("")
+    $roleFld.val("")
 }
 
 function main() {
@@ -99,6 +105,8 @@ function main() {
     $theTableBody = jQuery("tbody")
 
     $updateIcon.click(updateUser)
+
+
     $createIcon.click(() => {
         createUser({
             username: $usernameFld.val(),
@@ -115,12 +123,12 @@ function main() {
     })
 
     $addUserBtn.click(function () { // this is an anonymous/lambda function
-        // alert("adding user")
         createUser({
-            username: 'NEW USER',
+            username: 'new_user',
+            password: 'password1',
             firstName: "First",
             lastName: "Last",
-            role: 'ADMIN'
+            role: 'STUDENT'
         })
     })
 
