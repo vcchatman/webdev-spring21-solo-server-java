@@ -42,19 +42,6 @@ function renderUsers(users) {
     jQuery(".wbdv-editIcon").click(selectUser)
 }
 
-// {"_id":"6022ac73e1916a0017ebfed1",
-//     "username":"test",
-//     "password":"test_pass",
-//     "firstName":"Vanessa",
-//     "lastName":"Chatman",
-//     "role":"STUDENT",
-//     "_nuid":"vcchatman",
-//     "_domain":"users",
-//     "_createdAt":"2021-02-09T15:38:27.612Z",
-//     "_updatedAt":"2021-02-09T15:38:27.612Z",
-//     "__v":0}
-
-
 function deleteUser(event) {
     console.log(event.target)
     var deleteBtn = jQuery(event.target) // this means jQuery can take both css classes and dom objects to act on
@@ -85,12 +72,12 @@ function selectUser(event) {
 }
 
 function updateUser() {
-    console.log(selectUser())
-    selectUser.username = $usernameFld.val()
-    selectUser.password = $passwordFld.val()
-    selectUser.firstName = $firstNameFld.val()
-    selectUser.lastName = $lastNameFld.val()
-    selectUser.role = $roleFld.val()
+    console.log(selectedUser)
+    selectedUser.username = $usernameFld.val()
+    selectedUser.password = $passwordFld.val()
+    selectedUser.firstName = $firstNameFld.val()
+    selectedUser.lastName = $lastNameFld.val()
+    selectedUser.role = $roleFld.val()
     userService.updateUser(selectedUser._id, selectedUser)
         .then(function (status) {
             var index = users.findIndex(user => user._id === selectedUser._id)
