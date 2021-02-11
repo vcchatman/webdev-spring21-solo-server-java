@@ -45,7 +45,7 @@ function renderUsers(users) {
 
 function deleteUser(event) {
     console.log(event.target)
-    var deleteBtn = jQuery(event.target) // this means jQuery can take both css classes and dom objects to act on
+    var deleteBtn = jQuery(event.target)
     var theClass = deleteBtn.attr("class")
     var userIndex = deleteBtn.attr("id")
     var theId = users[userIndex]._id
@@ -93,7 +93,7 @@ function updateUser() {
 }
 
 function main() {
-    $usernameFld = $(".wbdv-usernameFld") // $ is to show that these variables aren't storing primitive data types, they're storing objects that are bound to the DOM
+    $usernameFld = $(".wbdv-usernameFld")
     $passwordFld = $(".wbdv-passwordFld")
     $firstNameFld = $(".wbdv-firstNameFld")
     $lastNameFld = $(".wbdv-lastNameFld")
@@ -101,7 +101,7 @@ function main() {
     $searchIcon = $(".wbdv-searchIcon")
     $createIcon = $(".wbdv-createIcon")
     $updateIcon = $(".wbdv-updateIcon")
-    $addUserBtn = $("#wbdv-create-user") // to listening for incoming click event
+    $addUserBtn = $("#wbdv-create-user")
     $theTableBody = jQuery("tbody")
 
     $updateIcon.click(updateUser)
@@ -134,7 +134,7 @@ function main() {
         }
     })
 
-    $addUserBtn.click(function () { // this is an anonymous/lambda function
+    $addUserBtn.click(function () {
         createUser({
             username: 'new_user',
             password: 'password1',
