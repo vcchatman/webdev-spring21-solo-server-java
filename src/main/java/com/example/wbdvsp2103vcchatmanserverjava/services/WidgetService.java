@@ -33,57 +33,70 @@ public class WidgetService {
     }
 
     public Widget createWidgetForTopic(String topicId, Widget widget) {
-        widget.setTopicId(topicId);
-        widget.setId((new Date()).getTime());
-        widgets.add(widget);
-        return widget;
+        return repository.save(widget);
+//        widget.setTopicId(topicId);
+//        widget.setId((new Date()).getTime());
+//        widgets.add(widget);
+//        return widget;
     }
 
     public List<Widget> findAllWidgets() {
-        return (List<Widget>) repository.findAll();
+        return repository.findAllWidgets();
+//        return (List<Widget>) repository.findAll();
 //        return widgets;
     }
 
     public List<Widget> findWidgetsForTopic(String topicId) {
-        List<Widget> ws = new ArrayList<Widget>();
-        for (Widget w : widgets) {
-            if (w.getTopicId().equals(topicId)) {
-                ws.add(w);
-            }
-        }
-        return ws;
+        return repository.findWidgetsForTopic(topicId);
+//        List<Widget> ws = new ArrayList<Widget>();
+//        for (Widget w : widgets) {
+//            if (w.getTopicId().equals(topicId)) {
+//                ws.add(w);
+//            }
+//        }
+//        return ws;
     }
 
+    // this by itself returns a wrapper that can be used to gauge success
+    // calling.get() will return the actual object we're seeking
     public Widget findWidgetById(Long id) {
-        for (Widget w : widgets) {
-            if (w.getId().equals(id)) {
-                return w;
-            }
-        }
-        return null;
-    }
+        return repository.findWidgetByID(id);
+//        return repository.findById(id).get();
 
+//        for (Widget w : widgets) {
+//            if (w.getId().equals(id)) {
+//                return w;
+//            }
+//        }
+//        return null;
+    }
 
     public Integer deleteWidget(Long id) {
-        int index = -1;
-        for (int i = 0; i < widgets.size(); i++) {
-            if (widgets.get(i).getId().equals(id)) {
-                index = i;
-                widgets.remove(index);
-                return 1;
-            }
-        }
-        return -1;
+        repository.deleteById(id);
+        return 1;
+//        int index = -1;
+//        for (int i = 0; i < widgets.size(); i++) {
+//            if (widgets.get(i).getId().equals(id)) {
+//                index = i;
+//                widgets.remove(index);
+//                return 1;
+//            }
+//        }
+//        return -1;
     }
 
-    public Integer updateWidget(Long id, Widget widget) {
-        for (int i = 0; i < widgets.size(); i++) {
-            if (widgets.get(i).getId().equals(id)) {
-                widgets.set(i, widget);
-                return 1;
-            }
-        }
-        return -1;
+    public Integer updateWidget(Long id, Widget newWidget) {
+        Widget originalWidget = findWidgetById(id);
+        originalWidget.setText(newWidget.getText());
+        repository.save(originalWidget);
+        return 1;
+//        for (int i = 0; i < widgets.size(); i++) {
+//            if (widgets.get(i).getId().equals(id)) {
+//                widgets.set(i, widget);
+//                return 1;
+//            }
+//        }
+//        return -1;
     }
 }
 
