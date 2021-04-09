@@ -114,28 +114,3 @@ public class Widget {
     }
 
 }
-
-//    create table widget (
-//        id bigint not null,
-//        height integer,
-//        size integer,
-//        text varchar(255),
-//    topic_id varchar(255),
-//    type varchar(255),
-//    width integer,
-//    primary key (id)
-//    ) engine=InnoDB
-
-//    create table widgets (
-//        id bigint not null auto_increment,
-//        height integer,
-//        size integer,
-//        text varchar(255),
-//    topic_id varchar(255),
-//    type varchar(255),
-//    width integer,
-//    primary key (id)
-//    ) engine=InnoDB
-
-//    alter table widgets
-//        add column name varchar(255)
