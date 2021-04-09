@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 // below annotates that we are intending to map this class to an equivalent table in  the database we have configured in our properties file
 @Entity
-@Table(name="widgets")
+@Table(name = "widgets")
 public class Widget {
 
     @Id
@@ -17,6 +17,8 @@ public class Widget {
     private Integer height;
     private String text;
     private String name;
+    private Boolean ordered;
+    private String src;
 
     public Widget(Long id, String topicId, String type, Integer size, Integer width, Integer height, String text) {
         this.id = id;
@@ -78,6 +80,7 @@ public class Widget {
     public void setHeight(Integer height) {
         this.height = height;
     }
+
     public String getText() {
         return text;
     }
@@ -93,6 +96,23 @@ public class Widget {
     public void setName(String name) {
         this.name = name;
     }
+
+    public Boolean getOrdered() {
+        return ordered;
+    }
+
+    public void setOrdered(Boolean ordered) {
+        this.ordered = ordered;
+    }
+
+    public String getSrc() {
+        return src;
+    }
+
+    public void setSrc(String src) {
+        this.src = src;
+    }
+
 }
 
 //    create table widget (

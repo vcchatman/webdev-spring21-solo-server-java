@@ -12,11 +12,11 @@ import java.util.List;
 @Service
 public class WidgetService {
 
-    //    asking the infrastructure to fabricate one of these things.
     @Autowired
     WidgetRepository repository;
 
     public Widget createWidgetForTopic(String topicId, Widget widget) {
+        widget.setTopicId(topicId);
         return repository.save(widget);
     }
 
@@ -40,6 +40,8 @@ public class WidgetService {
     public Integer updateWidget(Long id, Widget newWidget) {
         Widget originalWidget = findWidgetById(id);
         originalWidget.setText(newWidget.getText());
+        originalWidget.setSize(newWidget.getSize());
+        originalWidget.setType(newWidget.getType());
         repository.save(originalWidget);
         return 1;
     }
